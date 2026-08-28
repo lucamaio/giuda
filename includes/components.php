@@ -19,6 +19,7 @@ function ps_icon(string $name, string $class = ''): string
         'people' => '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 20c0-4 2.5-6 6-6s6 2 6 6M15 15c3 0 5 1.8 5 5"/>',
         'pin' => '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
         'project' => '<path d="M4 4h6v6H4zM14 4h6v6h-6zM9 14h6v6H9zM7 10v2h5M17 10v2h-5"/>',
+        'requests' => '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 14h5l2 3h4l2-3h5M8 8h8M8 11h5"/>',
         'search' => '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
         'services' => '<path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/>',
         'shield' => '<path d="M12 3 20 6v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/>',
@@ -59,4 +60,3 @@ function ps_checklist(array $items): void
     }
     echo '</ul>';
 }
-

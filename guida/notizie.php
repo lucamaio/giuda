@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$guideNumber = '01';
+$guideNumber = '02';
 $guideTitle = 'Come pubblicare una notizia';
 $pageTitle = $guideTitle;
 $pageDescription = 'Guida Point Service per creare, compilare e pubblicare correttamente una notizia sul sito istituzionale del Comune.';

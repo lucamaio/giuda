@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$guideNumber = '03';
+$guideNumber = '04';
 $guideTitle = 'Come creare e gestire un luogo';
 $pageTitle = $guideTitle;
 $pageDescription = 'Guida Point Service per creare e aggiornare le schede dei luoghi comunali con indirizzi, accessibilità, contatti e orari.';

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$guideNumber = '02';
+$guideNumber = '03';
 $guideTitle = 'Come pubblicare un evento';
 $pageTitle = $guideTitle;
 $pageDescription = 'Guida Point Service per pubblicare eventi e iniziative indicando correttamente date, luoghi e informazioni per i cittadini.';
