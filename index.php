@@ -7,6 +7,7 @@ $pageDescription = 'Consulta le guide Point Service 2026 per pubblicare e gestir
 $currentPage = 'home';
 
 require __DIR__ . '/includes/header.php';
+$availableGuideCount = count(array_filter($guides, static fn (array $guide): bool => (bool) ($guide['available'] ?? false)));
 ?>
 <main id="main-content">
     <section class="home-hero" aria-labelledby="hero-title">
@@ -17,7 +18,7 @@ require __DIR__ . '/includes/header.php';
                 <p class="home-hero__lead">Consulta le guide dedicate alla pubblicazione e alla gestione dei contenuti dei siti comunali realizzati con il modello WordPress Point Service.</p>
                 <div class="home-hero__actions">
                     <a class="button button--primary" href="#guide-list">Consulta le guide <?= ps_icon('arrow-right') ?></a>
-                    <a class="button button--secondary" href="#publishing-rules">Regole di pubblicazione</a>
+                    <a class="button button--publication" href="<?= ps_escape(ps_url('regole-pubblicazione.php')) ?>"><?= ps_icon('shield') ?> Regole di pubblicazione</a>
                 </div>
                 <span class="version-badge">Versione 2026</span>
             </div>
@@ -36,7 +37,7 @@ require __DIR__ . '/includes/header.php';
                     </div>
                 </div>
                 <div class="hero-visual__floating hero-visual__floating--one"><?= ps_icon('check') ?><span>Contenuto completo</span></div>
-                <div class="hero-visual__floating hero-visual__floating--two"><span>03</span><strong>Guide disponibili</strong></div>
+                <div class="hero-visual__floating hero-visual__floating--two"><span><?= str_pad((string) $availableGuideCount, 2, '0', STR_PAD_LEFT) ?></span><strong>Guide disponibili</strong></div>
             </div>
         </div>
     </section>
@@ -57,20 +58,32 @@ require __DIR__ . '/includes/header.php';
         </div>
     </section>
 
-    <section class="publishing-rules section" id="publishing-rules" aria-labelledby="publishing-rules-title">
+    <section class="video-archive-teaser section" aria-labelledby="video-archive-title">
         <div class="container">
-            <div class="section-heading section-heading--compact"><div><p class="eyebrow">Qualità dei contenuti</p><h2 id="publishing-rules-title">Prima di pubblicare</h2><p>Quattro controlli aiutano a rendere ogni informazione più utile e accessibile.</p></div></div>
-            <ol class="principles" role="list">
-                <li><span>01</span><h3>Titoli chiari</h3><p>Utilizza titoli specifici e comprensibili. Evita titoli generici e testi interamente in maiuscolo.</p></li>
-                <li><span>02</span><h3>Contenuti non duplicati</h3><p>Titolo, descrizione breve e contenuto completo devono fornire informazioni differenti.</p></li>
-                <li><span>03</span><h3>Documenti accessibili</h3><p>Pubblica documenti correttamente denominati e, quando possibile, accessibili.</p></li>
-                <li><span>04</span><h3>Riutilizza i contenuti</h3><p>Prima di creare nuovi uffici, persone o luoghi verifica sempre che non siano già presenti.</p></li>
-            </ol>
+            <div class="video-archive-teaser__inner">
+                <span class="video-archive-teaser__icon"><?= ps_icon('play') ?></span>
+                <div>
+                    <p class="eyebrow">Archivio video</p>
+                    <h2 id="video-archive-title">Le video guide del portale precedente</h2>
+                    <p>Rivedi i tutorial dedicati al modello dei siti comunali, ai contenuti, ai punti di contatto, alle organizzazioni e alle notizie.</p>
+                </div>
+                <a class="button button--primary" href="<?= ps_escape(ps_url('video-guide.php')) ?>">Guarda i video <?= ps_icon('arrow-right') ?></a>
+            </div>
         </div>
     </section>
 
-    <section class="help-banner section">
-        <div class="container"><div class="help-banner__inner"><div><p class="eyebrow">Un metodo condiviso</p><h2>Pubblicare bene significa aiutare i cittadini.</h2></div><p>Usa le guide come lista di controllo durante l’inserimento dei contenuti e verifica sempre il risultato sul sito pubblico.</p></div></div>
+    <section class="accessibility-teaser section" aria-labelledby="accessibility-teaser-title">
+        <div class="container">
+            <div class="accessibility-teaser__inner">
+                <span class="accessibility-teaser__icon"><?= ps_icon('shield') ?></span>
+                <div>
+                    <p class="eyebrow">Accessibilità editoriale</p>
+                    <h2 id="accessibility-teaser-title">Contenuti chiari e accessibili per tutti.</h2>
+                    <p>Consulta le regole per testi, immagini, documenti, collegamenti e controlli prima della pubblicazione.</p>
+                </div>
+                <a class="button button--light" href="<?= ps_escape(ps_url('regole-pubblicazione.php')) ?>">Consulta le regole <?= ps_icon('arrow-right') ?></a>
+            </div>
+        </div>
     </section>
 </main>
 <?php require __DIR__ . '/includes/footer.php'; ?>

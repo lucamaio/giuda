@@ -11,6 +11,9 @@ declare(strict_types=1);
         <nav class="site-footer__nav" aria-label="Navigazione nel piè di pagina">
             <a href="<?= ps_escape(ps_url('index.php')) ?>">Home guide</a>
             <a href="<?= ps_escape(ps_url('index.php#guide-list')) ?>">Tutte le guide</a>
+            <a href="<?= ps_escape(ps_url('regole-pubblicazione.php')) ?>">Regole di pubblicazione</a>
+            <a href="<?= ps_escape(ps_url('video-guide.php')) ?>">Video guide</a>
+            <a href="<?= ps_escape(ps_url('contatti.php')) ?>">Contatti</a>
         </nav>
         <div class="site-footer__meta"><span>Versione 2026</span><span>Copyright © <?= date('Y') ?> Point Service S.r.l.</span></div>
     </div>

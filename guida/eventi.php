@@ -8,26 +8,36 @@ $pageTitle = $guideTitle;
 $pageDescription = 'Guida Point Service per pubblicare eventi e iniziative indicando correttamente date, luoghi e informazioni per i cittadini.';
 $currentPage = 'guide';
 $breadcrumbCurrent = 'Eventi';
+$guideIntroId = 'premessa-iniziale';
 $guideIntroduction = [
     'La sezione Eventi permette di pubblicare manifestazioni, incontri, spettacoli, iniziative culturali, appuntamenti istituzionali e altre attività aperte al pubblico.',
     'Una scheda Evento correttamente compilata consente al cittadino di conoscere immediatamente cosa si svolge, quando, dove e come partecipare.',
 ];
 $toc = [
-    ['number' => '01', 'id' => 'accesso-eventi', 'title' => 'Accedere alla sezione Eventi'],
-    ['number' => '02', 'id' => 'titolo', 'title' => 'Inserire il titolo'],
-    ['number' => '03', 'id' => 'tipo-evento', 'title' => 'Selezionare il tipo di evento'],
-    ['number' => '04', 'id' => 'date-orari', 'title' => 'Inserire data e orari'],
-    ['number' => '05', 'id' => 'argomenti', 'title' => 'Selezionare gli argomenti'],
-    ['number' => '06', 'id' => 'descrizione-breve', 'title' => 'Scrivere la descrizione breve'],
-    ['number' => '07', 'id' => 'destinatari', 'title' => 'Indicare a chi è rivolto'],
-    ['number' => '08', 'id' => 'descrizione-completa', 'title' => 'Scrivere la descrizione completa'],
-    ['number' => '09', 'id' => 'luogo', 'title' => 'Collegare il luogo'],
-    ['number' => '10', 'id' => 'evento-principale', 'title' => 'Collegare un eventuale evento principale'],
-    ['number' => '11', 'id' => 'costi', 'title' => 'Inserire costi e modalità di partecipazione'],
-    ['number' => '12', 'id' => 'organizzatori', 'title' => 'Organizzatori, patrocinio e contatti'],
-    ['number' => '13', 'id' => 'immagini', 'title' => 'Immagini'],
-    ['number' => '14', 'id' => 'video', 'title' => 'Video e trascrizioni'],
-    ['number' => '15', 'id' => 'controllo-finale', 'title' => 'Controllo finale'],
+    ['number' => '01', 'id' => 'premessa-iniziale', 'title' => 'Premessa iniziale'],
+    [
+        'number' => '02',
+        'id' => 'nuovo-evento',
+        'title' => 'Nuovo evento',
+        'children' => [
+            ['number' => '01', 'id' => 'accesso-eventi', 'title' => 'Accedere alla sezione Eventi'],
+            ['number' => '02', 'id' => 'titolo', 'title' => 'Inserire il titolo'],
+            ['number' => '03', 'id' => 'tipo-evento', 'title' => 'Selezionare il tipo di evento'],
+            ['number' => '04', 'id' => 'date-orari', 'title' => 'Inserire data e orari'],
+            ['number' => '05', 'id' => 'argomenti', 'title' => 'Selezionare gli argomenti'],
+            ['number' => '06', 'id' => 'descrizione-breve', 'title' => 'Scrivere la descrizione breve'],
+            ['number' => '07', 'id' => 'destinatari', 'title' => 'Indicare a chi è rivolto'],
+            ['number' => '08', 'id' => 'descrizione-completa', 'title' => 'Scrivere la descrizione completa'],
+            ['number' => '09', 'id' => 'luogo', 'title' => 'Collegare il luogo'],
+            ['number' => '10', 'id' => 'evento-principale', 'title' => 'Collegare un eventuale evento principale'],
+            ['number' => '11', 'id' => 'costi', 'title' => 'Inserire costi e modalità di partecipazione'],
+            ['number' => '12', 'id' => 'organizzatori', 'title' => 'Organizzatori, patrocinio e contatti'],
+            ['number' => '13', 'id' => 'immagini', 'title' => 'Immagini'],
+            ['number' => '14', 'id' => 'video', 'title' => 'Video e trascrizioni'],
+            ['number' => '15', 'id' => 'controllo-finale', 'title' => 'Controllo finale'],
+        ],
+    ],
+    ['number' => '03', 'id' => 'modifica-evento', 'title' => 'Modifica di un evento'],
 ];
 $previousGuide = ['title' => 'Notizie', 'href' => 'guida/notizie.php'];
 $nextGuide = ['title' => 'Luoghi', 'href' => 'guida/luoghi.php'];
@@ -39,6 +49,8 @@ require __DIR__ . '/../includes/header.php';
         <?php require __DIR__ . '/../includes/guide-intro.php'; ?>
 
         <article class="guide-content" aria-label="Procedura per pubblicare un evento">
+            <h2 class="guide-chapter-title" id="nuovo-evento">Nuovo evento</h2>
+
             <section class="guide-section" aria-labelledby="accesso-eventi">
                 <?php ps_section_heading('01', 'accesso-eventi', 'Accedere alla sezione Eventi'); ?>
                 <p>Accedi all'area riservata del sito istituzionale con le credenziali che ti sono state assegnate.</p>
@@ -46,7 +58,7 @@ require __DIR__ . '/../includes/header.php';
                 <p class="guide-path">Eventi → Tutti gli eventi</p>
                 <p>Viene visualizzato l'elenco degli eventi già presenti. Prima di aggiungere una nuova scheda verifica che lo stesso evento non sia già stato pubblicato.</p>
                 <p>Per iniziare seleziona “Aggiungi un evento”. Le funzioni disponibili possono variare in base alle autorizzazioni del tuo utente.</p>
-                <?php ps_screenshot_placeholder('Pannello WordPress con la voce Eventi evidenziata'); ?>
+                <?php ps_screenshot_placeholder('Menu Eventi nel pannello', 'Pannello WordPress con la voce “Eventi” e il comando per aggiungere un nuovo evento evidenziati.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="titolo">
@@ -64,6 +76,7 @@ require __DIR__ . '/../includes/header.php';
                 <p>Seleziona la tipologia che descrive meglio la natura dell'iniziativa, scegliendo tra le opzioni disponibili nel sito.</p>
                 <p>Il tipo di evento aiuta il cittadino a distinguere, ad esempio, un incontro, uno spettacolo, una manifestazione o una cerimonia.</p>
                 <p>Utilizza una sola tipologia coerente con il contenuto e non confonderla con gli argomenti tematici.</p>
+                <?php ps_screenshot_placeholder('Tipologia dell’evento', 'Campo di selezione della tipologia con una delle opzioni disponibili nel portale.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="date-orari">
@@ -72,7 +85,7 @@ require __DIR__ . '/../includes/header.php';
                 <p>Se l'iniziativa si svolge in una sola giornata, indica l'orario di apertura e quello di conclusione. Per eventi su più giornate verifica che l'intervallo inserito corrisponda al programma ufficiale.</p>
                 <p>Quando gli orari cambiano da un giorno all'altro, descrivi chiaramente le variazioni nel testo completo.</p>
                 <aside class="callout"><?= ps_icon('calendar') ?><p>Controlla che date e orari coincidano in tutti i punti della scheda e negli eventuali allegati.</p></aside>
-                <?php ps_screenshot_placeholder('Campi data e orario dell’evento compilati correttamente'); ?>
+                <?php ps_screenshot_placeholder('Date e orari dell’evento', 'Campi di inizio e fine dell’evento compilati correttamente, compresi gli orari.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="argomenti">
@@ -118,6 +131,7 @@ require __DIR__ . '/../includes/header.php';
                 <p>Il collegamento permette di mostrare al cittadino indirizzo, mappa, accessibilità, contatti e altre informazioni già registrate nella scheda del luogo.</p>
                 <aside class="callout"><?= ps_icon('pin') ?><p><strong>Prima di creare un nuovo luogo verifica sempre che non sia già presente.</strong></p></aside>
                 <p>Se l'evento si svolge in più sedi, indica con chiarezza l'associazione tra le attività e i rispettivi luoghi nella descrizione completa.</p>
+                <?php ps_screenshot_placeholder('Collegamento del luogo', 'Campo del luogo con la ricerca e la selezione di una scheda già presente nel sito.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="evento-principale">
@@ -146,6 +160,7 @@ require __DIR__ . '/../includes/header.php';
                 <p>Utilizza un'immagine principale pertinente, leggibile e di qualità adeguata.</p>
                 <p>Evita locandine contenenti informazioni essenziali disponibili solamente come testo nell'immagine: date, orari, luogo e modalità di partecipazione devono essere riportati anche nei campi testuali della scheda.</p>
                 <p>Compila il testo alternativo quando l'immagine trasmette informazioni utili. Se è puramente decorativa, segui le impostazioni previste dal sito.</p>
+                <?php ps_screenshot_placeholder('Immagine principale dell’evento', 'Campo per caricare o selezionare l’immagine, con il testo alternativo compilato.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="video">
@@ -159,6 +174,15 @@ require __DIR__ . '/../includes/header.php';
                 <?php ps_section_heading('15', 'controllo-finale', 'Controllo finale'); ?>
                 <?php ps_checklist(['Titolo chiaro', 'Tipo di evento corretto', 'Date e orari verificati', 'Descrizioni complete', 'Destinatari indicati', 'Luogo corretto', 'Costi e prenotazioni', 'Contatti aggiornati', 'Immagini e video accessibili']); ?>
                 <p>Dopo la pubblicazione apri l'evento sul sito pubblico e controlla il risultato finale, prestando particolare attenzione alle date, alla visualizzazione del luogo e ai collegamenti.</p>
+            </section>
+
+            <section class="guide-section" aria-labelledby="modifica-evento">
+                <?php ps_section_heading('16', 'modifica-evento', 'Modifica di un evento'); ?>
+                <p>Dal menu laterale seleziona <strong>Eventi</strong> e poi <strong>Tutti gli eventi</strong>. Cerca la scheda da aggiornare e aprila con il comando <strong>Modifica</strong>.</p>
+                <p>Aggiorna soltanto i campi necessari e controlla con particolare attenzione date, orari, luogo, costi e modalità di partecipazione. Se cambiano informazioni riportate anche in allegati o collegamenti esterni, mantienile coerenti.</p>
+                <aside class="callout"><?= ps_icon('check') ?><p><strong>Non duplicare l'evento per correggere una scheda già pubblicata.</strong></p></aside>
+                <p>Salva le modifiche e verifica il risultato sul sito pubblico, anche da smartphone.</p>
+                <?php ps_screenshot_placeholder('Modifica di un evento esistente', 'Elenco degli eventi con la scheda corretta e il comando “Modifica” evidenziati.'); ?>
             </section>
         </article>
 

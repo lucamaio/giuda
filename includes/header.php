@@ -8,6 +8,7 @@ require_once __DIR__ . '/components.php';
 $pageTitle = $pageTitle ?? 'Guide operative';
 $pageDescription = $pageDescription ?? 'Guide operative Point Service per la gestione dei siti istituzionali.';
 $currentPage = $currentPage ?? '';
+$isGuideMenuCurrent = in_array($currentPage, ['guide', 'publishing-rules', 'video-guide'], true);
 ?>
 <!doctype html>
 <html lang="it">
@@ -33,8 +34,18 @@ $currentPage = $currentPage ?? '';
             <span class="nav-toggle__label">Menu</span><?= ps_icon('menu') ?>
         </button>
         <nav class="site-nav" id="primary-navigation" aria-label="Navigazione principale">
-            <a href="<?= ps_escape(ps_url('index.php')) ?>"<?= $currentPage === 'home' ? ' aria-current="page"' : '' ?>>Home guide</a>
-            <a href="<?= ps_escape(ps_url('index.php#guide-list')) ?>">Tutte le guide</a>
+            <a href="<?= ps_escape(ps_url('index.php')) ?>"<?= $currentPage === 'home' ? ' aria-current="page"' : '' ?>>Home</a>
+            <details class="site-nav__group">
+                <summary class="site-nav__parent<?= $isGuideMenuCurrent ? ' site-nav__parent--current' : '' ?>">
+                    <span>Guide</span><?= ps_icon('chevron-right', 'site-nav__chevron') ?>
+                </summary>
+                <div class="site-nav__submenu">
+                    <a href="<?= ps_escape(ps_url('index.php#guide-list')) ?>"<?= $currentPage === 'guide' ? ' aria-current="page"' : '' ?>><strong>Tutte le guide</strong><span>Consulta le procedure disponibili</span></a>
+                    <a href="<?= ps_escape(ps_url('regole-pubblicazione.php')) ?>"<?= $currentPage === 'publishing-rules' ? ' aria-current="page"' : '' ?>><strong>Regole di pubblicazione</strong><span>Testi, immagini e documenti accessibili</span></a>
+                    <a href="<?= ps_escape(ps_url('video-guide.php')) ?>"<?= $currentPage === 'video-guide' ? ' aria-current="page"' : '' ?>><strong>Video guide</strong><span>Rivedi i tutorial del vecchio portale</span></a>
+                </div>
+            </details>
+            <a href="<?= ps_escape(ps_url('contatti.php')) ?>"<?= $currentPage === 'contatti' ? ' aria-current="page"' : '' ?>>Contatti</a>
         </nav>
     </div>
 </header>

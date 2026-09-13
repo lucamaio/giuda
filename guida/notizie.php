@@ -8,27 +8,37 @@ $pageTitle = $guideTitle;
 $pageDescription = 'Guida Point Service per creare, compilare e pubblicare correttamente una notizia sul sito istituzionale del Comune.';
 $currentPage = 'guide';
 $breadcrumbCurrent = 'Notizie';
+$guideIntroId = 'premessa-iniziale';
 $guideIntroduction = [
     "Questa guida illustra come creare e pubblicare correttamente una Notizia all'interno del sito istituzionale del Comune.",
     'La sezione Notizie permette di pubblicare avvisi, comunicazioni e aggiornamenti rivolti ai cittadini. Per garantire una comunicazione chiara e accessibile è importante compilare correttamente tutti i campi previsti, evitando duplicazioni e utilizzando titoli e descrizioni comprensibili.',
 ];
 $toc = [
-    ['number' => '01', 'id' => 'accesso', 'title' => "Accedere all'area riservata"],
-    ['number' => '02', 'id' => 'notizie', 'title' => 'Aprire la sezione Notizie'],
-    ['number' => '03', 'id' => 'titolo', 'title' => 'Inserire il titolo'],
-    ['number' => '04', 'id' => 'argomenti', 'title' => 'Selezionare gli argomenti'],
-    ['number' => '05', 'id' => 'tipo', 'title' => 'Indicare il tipo di notizia'],
-    ['number' => '06', 'id' => 'ufficio', 'title' => "Indicare l'ufficio responsabile"],
-    ['number' => '07', 'id' => 'descrizione-breve', 'title' => 'Descrizione breve'],
-    ['number' => '08', 'id' => 'testo-completo', 'title' => 'Testo completo'],
-    ['number' => '09', 'id' => 'date', 'title' => 'Date'],
-    ['number' => '10', 'id' => 'contenuti-collegati', 'title' => 'Contenuti collegati'],
-    ['number' => '11', 'id' => 'documenti', 'title' => 'Documenti e allegati'],
-    ['number' => '12', 'id' => 'immagine', 'title' => 'Immagine principale'],
-    ['number' => '13', 'id' => 'video', 'title' => 'Video'],
-    ['number' => '14', 'id' => 'controllo-finale', 'title' => 'Controllo finale'],
+    ['number' => '01', 'id' => 'premessa-iniziale', 'title' => 'Premessa iniziale'],
+    [
+        'number' => '02',
+        'id' => 'nuova-notizia',
+        'title' => 'Nuova notizia',
+        'children' => [
+            ['number' => '01', 'id' => 'accesso', 'title' => "Accedere all'area riservata"],
+            ['number' => '02', 'id' => 'notizie', 'title' => 'Aprire la sezione Notizie'],
+            ['number' => '03', 'id' => 'titolo', 'title' => 'Inserire il titolo'],
+            ['number' => '04', 'id' => 'argomenti', 'title' => 'Selezionare gli argomenti'],
+            ['number' => '05', 'id' => 'tipo', 'title' => 'Indicare il tipo di notizia'],
+            ['number' => '06', 'id' => 'ufficio', 'title' => "Indicare l'ufficio responsabile"],
+            ['number' => '07', 'id' => 'descrizione-breve', 'title' => 'Descrizione breve'],
+            ['number' => '08', 'id' => 'testo-completo', 'title' => 'Testo completo'],
+            ['number' => '09', 'id' => 'date', 'title' => 'Date'],
+            ['number' => '10', 'id' => 'contenuti-collegati', 'title' => 'Contenuti collegati'],
+            ['number' => '11', 'id' => 'documenti', 'title' => 'Documenti e allegati'],
+            ['number' => '12', 'id' => 'immagine', 'title' => 'Immagine principale'],
+            ['number' => '13', 'id' => 'video', 'title' => 'Video'],
+            ['number' => '14', 'id' => 'controllo-finale', 'title' => 'Controllo finale'],
+        ],
+    ],
+    ['number' => '03', 'id' => 'modifica-notizia', 'title' => 'Modifica di una notizia'],
 ];
-$previousGuide = null;
+$previousGuide = ['title' => 'Struttura del sito', 'href' => 'guida/struttura-sito.php'];
 $nextGuide = ['title' => 'Eventi', 'href' => 'guida/eventi.php'];
 
 require __DIR__ . '/../includes/header.php';
@@ -38,14 +48,16 @@ require __DIR__ . '/../includes/header.php';
         <?php require __DIR__ . '/../includes/guide-intro.php'; ?>
 
         <article class="guide-content" aria-label="Procedura per pubblicare una notizia">
+            <h2 class="guide-chapter-title" id="nuova-notizia">Nuova notizia</h2>
+
             <section class="guide-section" aria-labelledby="accesso">
                 <?php ps_section_heading('01', 'accesso', "Accedere all'area riservata"); ?>
                 <p>Dalla homepage del sito istituzionale scorri fino alla parte inferiore della pagina e seleziona il collegamento “Area riservata”.</p>
-                <?php ps_screenshot_placeholder('Parte inferiore della homepage con evidenziato il collegamento “Area riservata”'); ?>
+                <?php ps_screenshot_placeholder('Collegamento Area riservata', 'Parte inferiore della homepage con il collegamento “Area riservata” evidenziato.'); ?>
                 <p>Nella schermata di accesso inserisci le credenziali che ti sono state fornite e seleziona “Accedi”.</p>
                 <p>Una volta effettuato l'accesso viene visualizzato il pannello di amministrazione di WordPress.</p>
                 <p>Le funzioni disponibili possono cambiare in base alle autorizzazioni assegnate al singolo utente.</p>
-                <?php ps_screenshot_placeholder('Schermata di login WordPress'); ?>
+                <?php ps_screenshot_placeholder('Accesso al pannello WordPress', 'Schermata di login con i campi nome utente, password e il pulsante “Accedi”.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="notizie">
@@ -55,7 +67,7 @@ require __DIR__ . '/../includes/header.php';
                 <p>Viene mostrato l'elenco delle notizie già presenti nel sito.</p>
                 <p>Da questa schermata è possibile consultare, modificare o aggiungere nuovi contenuti, compatibilmente con i permessi assegnati.</p>
                 <p>Per creare un nuovo contenuto seleziona “Aggiungi una notizia”.</p>
-                <?php ps_screenshot_placeholder('Pannello WordPress con la voce Notizie evidenziata'); ?>
+                <?php ps_screenshot_placeholder('Menu Notizie nel pannello', 'Pannello WordPress con la voce “Notizie” e il comando per aggiungere una nuova notizia evidenziati.'); ?>
             </section>
 
             <section class="guide-section" aria-labelledby="titolo">
@@ -160,6 +172,16 @@ require __DIR__ . '/../includes/header.php';
                 <?php ps_section_heading('14', 'controllo-finale', 'Controllo finale'); ?>
                 <?php ps_checklist(['Titolo corretto', 'Descrizione breve', 'Testo comprensibile', 'Date corrette', 'Ufficio corretto', 'Collegamenti corretti', 'Documenti accessibili', 'Allegati corretti', 'Controllo dati personali']); ?>
                 <p>Dopo la pubblicazione apri la notizia direttamente dal sito e controlla il risultato finale.</p>
+            </section>
+
+            <section class="guide-section" aria-labelledby="modifica-notizia">
+                <?php ps_section_heading('15', 'modifica-notizia', 'Modifica di una notizia'); ?>
+                <p>Dal menu laterale seleziona <strong>Notizie</strong> e poi <strong>Tutte le notizie</strong>.</p>
+                <p>Individua la notizia da aggiornare nell'elenco. Puoi utilizzare il campo di ricerca oppure filtrare i contenuti disponibili, quindi seleziona il titolo della notizia o il comando <strong>Modifica</strong>.</p>
+                <p>Prima di intervenire verifica di avere aperto la scheda corretta e controlla lo stato del contenuto. Aggiorna solamente i campi necessari, mantenendo coerenti titolo, testo, date, collegamenti ed eventuali allegati.</p>
+                <aside class="callout"><?= ps_icon('check') ?><p><strong>Non creare una nuova notizia se devi soltanto correggere o aggiornare un contenuto gi&agrave; pubblicato.</strong></p></aside>
+                <p>Salva le modifiche con il comando disponibile nella schermata. Al termine apri la notizia sul sito pubblico e verifica che le informazioni aggiornate siano visualizzate correttamente.</p>
+                <?php ps_screenshot_placeholder('Modifica di una notizia esistente', 'Elenco delle notizie con il titolo della scheda e il comando “Modifica” evidenziati.'); ?>
             </section>
         </article>
 
