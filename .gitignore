@@ -1,0 +1,4 @@
+#Escludo i video in quanto hanno una dimensione non valida
+assets/video
+*.mov
+*.mp4
