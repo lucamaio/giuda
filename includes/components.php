@@ -5,6 +5,7 @@ declare(strict_types=1);
 function ps_icon(string $name, string $class = ''): string
 {
     $paths = [
+        'info' => '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',
         'arrow-right' => '<path d="M5 12h14M13 6l6 6-6 6"/>',
         'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
         'check' => '<path d="m5 12 4 4L19 6"/>',

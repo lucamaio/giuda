@@ -21,8 +21,8 @@ $breadcrumbCurrent = $breadcrumbCurrent ?? $guideTitle;
     </div>
 </header>
 <nav class="guide-toc<?= $hasNestedToc ? ' guide-toc--nested' : '' ?>" aria-labelledby="toc-title">
-    <div class="guide-toc__heading"><p class="eyebrow">Indice</p><h2 id="toc-title">In questa guida</h2></div>
-    <ol class="guide-toc__list">
+    <div class="guide-toc__heading"><div><p class="eyebrow">Indice dei contenuti</p><h2 id="toc-title">In questa guida</h2></div><button class="guide-toc__toggle" type="button" aria-expanded="true" aria-controls="guide-toc-items" aria-label="Mostra o nascondi l’indice"><?= ps_icon('chevron-right') ?></button></div>
+    <ol class="guide-toc__list" id="guide-toc-items">
         <?php foreach ($toc as $item): ?>
             <li>
                 <a href="#<?= ps_escape($item['id']) ?>">
